@@ -1,0 +1,83 @@
+/* imperial-style.css */
+body{
+	background-image: url("../resource/stars.jpg");
+	background-repeat:no-repeat;
+	font-family: impact;
+	color: gold;
+}
+#container{
+	width:75%;
+	margin: 0 auto;
+	padding: 30px;
+	border-radius: 10px;
+	position: relative;
+}
+#top-menu{
+	text-align:center;
+}
+.button{
+	color:gold;
+	text-decoration:none;
+	font-size:2em;
+	border-radius: 10px;
+	background-color:black;
+	margin: 30px;
+	padding:5px;
+	border-style:outset;
+}
+.button:hover{
+	background-color:white;
+	color:black;
+}
+#title{
+	font-size:4em;
+	text-transform:uppercase;
+	text-align:center;
+}
+figure{
+	float:left;
+	text-align:center;
+	width:25%;
+	font-size:2em;
+}
+#description figure{
+	float:right;
+}
+a{
+	color:gold;
+}
+p{
+	font-size:2em;
+}
+.lists{
+	font-size:2em;
+}
+#charmenu{
+	position: center;
+    margin-left: 8.5%;
+}
+@media(max-width: 1100px){
+	#container{
+		width:85%;
+	}
+	body{
+		font-size:85%;
+	}
+	figure{
+		float:none;
+	}
+}
+@media(max-width: 800px){
+	#container{
+		width:95%;
+	}
+	body{
+		font-size:70%;
+	}
+	figure{
+		float:none;
+	}
+	#description figure{
+		float:none;
+	}
+}
