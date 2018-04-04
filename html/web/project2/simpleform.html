@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./../../../css/shared.css"/>
+    <Title>Simple Form</title>
+</head>
+<body>
+<div id="contain" class="container">
+    <nav class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="../../landingpage.html">Nolan Tunny</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../empire-site/html/deathstar.html">Project 1</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="simpleform.html">Project 2</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+
+<p id="foot">This site was built using the twitter bootstrap v4</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="simpleform.js"></script>
+<script>
+    var contain = document.querySelector("#contain");
+    contain.appendChild(makeForm("simpleForm","Pony Form"));
+    var simple = document.querySelector("#simpleForm");
+    var bron = document.createElement("img");
+    bron.setAttribute("src","brony.gif");
+
+    simple.appendChild(makeInput("text","first_name","","First Name: ",true));
+    simple.appendChild(makeInput("text","last_name","","Last Name: ",true));
+    simple.appendChild(makeInput("text","nickname","","Nickname: ",false));
+    simple.appendChild(makeInput("text","cutie_mark","","Cutie Mark: ",false));
+    simple.appendChild(makeInput("password","password","","Password: ",true));
+    simple.appendChild(makeInput("email","email","","Email: ",true));
+    simple.appendChild(makeInput("date","pony_birthday","","Brithday: ",true))
+
+    var colors = ["Red","Orange","Yellow","Green","Blue","Purple","Violet","Pink"];
+    simple.appendChild(makeSelect("pony_color",colors,"Color: "));
+
+    var radios = document.createElement("div");
+    radios.setAttribute("class","form-group row");
+    var radCol1 = document.createElement("div");
+    radCol1.setAttribute("class","col-4");
+    var type =["Earth Pony","Alicorn","Pegasus","Unicorn"];
+    radCol1.appendChild(makeRadCheck("pony_type",type,true,"Pony Type","radio"));
+    radios.appendChild(radCol1);
+    var radCol2 = document.createElement("div");
+    radCol2.setAttribute("class","col-4");
+    var land =["Ponyville","Canterlot","Cloudsdale","Crystal Empire","Everfree Forest","Manehattan","Appleloosa",
+    "Dragon Lands","Bronyville"];
+    radCol2.appendChild(makeRadCheck("pony_land",land,false,"Pony Land","radio"));
+    radios.appendChild(radCol2);
+    simple.appendChild(radios);
+
+    var checkboxes = document.createElement("div");
+    checkboxes.setAttribute("class","form-group row");
+    var checkCol1 = document.createElement("div");
+    checkCol1.setAttribute("class","col-4");
+    var strength =["Friendship","Humility","Flight","Music","Cooking","Charm","Combat"];
+    checkCol1.appendChild(makeRadCheck("pony_strength[]",strength,false,"Pony Strengths","checkbox"));
+    checkboxes.appendChild(checkCol1);
+    var checkCol2 = document.createElement("div");
+    checkCol2.setAttribute("class","col-4");
+    var weakness =["Evilness","Impatience","Disorganization","Dishonesty","Shy","Lazy","Selfish","Arrogance"];
+    checkCol2.appendChild(makeRadCheck("pony_weakness[]",weakness,true,"Pony Weakness","checkbox"));
+    checkboxes.appendChild(checkCol2);
+    simple.appendChild(checkboxes);
+
+    var friend = document.querySelector("#Friendship");
+    friend.checked = true;
+
+    simple.appendChild(makeButton("submit","Submit"));
+    simple.appendChild(makeButton("reset","Clear"));
+
+    friend.addEventListener("change",function () {
+        if(!friend.checked){
+            document.querySelector("#first_name").value="Nightmare";
+            document.querySelector("#last_name").value="Moon";
+            document.querySelector("#nickname").value="Crazy Princess Luna";
+            document.querySelector("#cutie_mark").value="Crescent Moon";
+            document.querySelector("#Evilness").checked = true;
+        }
+    });
+
+    document.querySelector("#pony_color").addEventListener("change",function () {
+        var color = document.querySelector("#pony_color");
+        for(var i=0;i<color.length;i++){
+            if(color[i].selected){
+                document.getElementsByTagName("BODY")[0].setAttribute("style","background-color: "+color[i].getAttribute("value"));
+            }
+        }
+    });
+
+    document.querySelector("#Pegasus").addEventListener("change",function () {
+        if(document.querySelector("#Pegasus").checked){
+            document.querySelector("#Flight").checked = true;
+        }
+    });
+
+    document.querySelector("#Alicorn").addEventListener("change",function () {
+        if(document.querySelector("#Alicorn").checked){
+            document.querySelector("#Flight").checked = true;
+            document.querySelector("#Arrogance").checked = true;
+        }
+    });
+
+    document.querySelector("#Bronyville").addEventListener("change",function () {
+        if(document.querySelector("#Bronyville").checked){
+            contain.appendChild(bron);
+        }
+        else{
+            contain.removeChild(bron);
+        }
+    });
+
+    simple.addEventListener("submit",checkForm);
+</script>
+</body>
+</html>

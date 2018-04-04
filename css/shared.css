@@ -21,3 +21,16 @@ body{
     font-weight: lighter;
     text-align: center;
 }
+.card form{
+    margin: 10px;
+}
+.btn{
+    margin: 5px;
+}
+legend{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+nav{
+    margin-bottom: 5px;
+}
